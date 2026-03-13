@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Expense</title>
+
+    <th:block th:insert="header-links::headLinks"></th:block>
+</head>
+
+<body>
+
+<nav th:replace="navbar :: navbar_body"></nav>
+
+<div class="container">
+
+    <div class="alert alert-success w-50 mx-auto text-center mt-5"
+         th:if="${successMsg}"
+         th:text="${successMsg}">
+    </div>
+
+    <h1 class="fs-1 text-center my-5">Welcome To Expense Tracker</h1>
+
+    <div class="d-flex justify-content-between w-50 mx-auto">
+
+        <a class="btn btn-lg btn-outline-dark" th:href="@{/api/expense/add}">
+            Add Expense
+        </a>
+
+        <a class="btn btn-lg btn-outline-primary" th:href="@{/api/expense/getAll}">
+            Expense List
+        </a>
+
+    </div>
+
+</div>
+
+<th:block th:insert="body-links :: bodyLinks"></th:block>
+
+</body>
+</html>

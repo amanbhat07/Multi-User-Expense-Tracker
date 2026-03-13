@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <th:block th:insert="header-links::headLinks"></th:block>
+</head>
+
+<body>
+
+<div style="width:40%;margin:auto">
+
+    <form class="row g-3 w-100 mt-4" th:action="@{/login}" method="post">
+
+        <h2>Login Form</h2>
+
+        <div class="col-md-12">
+            <label class="form-label">Email</label>
+
+            <input
+                    type="text"
+                    name="username"
+                    class="form-control"
+                    placeholder="Enter Username">
+
+        </div>
+
+        <div class="col-md-12">
+            <label class="form-label">Password</label>
+
+            <input
+                    type="password"
+                    name="password"
+                    class="form-control"
+                    placeholder="Enter Password">
+
+        </div>
+
+        <div class="col-12 mt-3">
+            <button type="submit" class="btn btn-primary btn-lg">
+                Login
+            </button>
+        </div>
+
+        <a th:href="@{/register}" style="text-decoration:none;">
+            New User? Register Here
+        </a>
+
+    </form>
+
+</div>
+
+</body>
+</html>

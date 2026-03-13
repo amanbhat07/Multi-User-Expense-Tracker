@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Expense</title>
+
+    <th:block th:insert="header-links :: headLinks"></th:block>
+</head>
+<body>
+<!--Navbar include-->
+<nav th:replace="navbar :: navbar_body">
+
+</nav>
+
+<div class="container">
+    <div class="alert alert-success w-50 mx-auto text-center mt-5" th:if="${successMsg}" th:text="${successMsg}"></div>
+    <div class="alert alert-danger w-50 mx-auto text-center mt-5" th:if="${errorMsg}" th:text="${errorMsg}"></div>
+    <h1 class="fs-1 text-center my-5">Welcome To Expense tracker</h1>
+
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">Expense Name</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Date</th>
+            <th scope="col">Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="e:${expenses}">
+            <td th:text="${e.expenseName}">1</td>
+            <td th:text="${e.amount}">Mark</td>
+            <td th:text="${e.date}">Otto</td>
+            <td th:text="${e.description}"></td>
+            <td>
+                <a th:href="@{/api/expense/update/{expenseId}(expenseId = ${e.id})}" class="btn btn-outline-dark me-2"><i class="fa-solid fa-pencil"></i></a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+
+</div>
+
+<th:block th:insert="body-links :: bodyLinks"></th:block>
+</body>
+</html>

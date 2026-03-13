@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Expense</title>
+
+    <th:block th:insert="header-links::headLinks"></th:block>
+</head>
+<body>
+<!--Navbar include-->
+<nav th:replace="navbar::navbar_body">
+
+</nav>
+
+<div class="container">
+    <div class="alert alert-danger w-50 mx-auto text-center mt-5" th:if="${errorMsg}" th:text="${errorMsg}"></div>
+    <h1 class="fs-1 text-center my-5">Welcome To Expense Tracker</h1>
+
+    <form class="row g-3 w-75 mx-auto" th:object="${expenseRequest}" th:action="@{/api/expense/add}" method="post">
+
+        <div class="col-md-12">
+            <label for="expenseName" class="form-label">Expense Name</label>
+            <input type="text" class="form-control" id="expenseName" th:field="*{expenseName}">
+        </div>
+        <div class="col-md-12">
+            <label for="amount" class="form-label">Amount</label>
+            <input type="number" class="form-control" id="amount" th:field="*{amount}">
+        </div>
+        <div class="col-md-12">
+            <label for="date" class="form-label">Date</label>
+            <input type="date" class="form-control" id="date" th:field="*{date}">
+        </div>
+        <div class="col-md-12">
+            <label for="description" class="form-label">Description</label>
+            <input type="text" class="form-control" id="description" th:field="*{description}">
+        </div>
+
+        <div class="col-12 mt-3">
+            <button type="submit" class="btn btn-primary btn-lg">Save</button>
+        </div>
+    </form>
+
+
+</div>
+
+<th:block th:insert="body-links::bodyLinks"></th:block>
+</body>
+</html>
